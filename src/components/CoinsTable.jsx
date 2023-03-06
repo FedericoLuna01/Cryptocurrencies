@@ -43,7 +43,6 @@ export const CoinsTable = () => {
 
   useEffect(() => {
     fetchCoins()
-    console.log(coins)
   }, [currency])
 
   return (
@@ -82,7 +81,8 @@ export const CoinsTable = () => {
               <LinearProgress
                 sx={{
                   width: '100%',
-                  backgroundColor: 'lime'
+                  backgroundColor: 'lime',
+                  marginTop: 5
                 }}
               />
                 )
@@ -204,7 +204,10 @@ export const CoinsTable = () => {
             padding: 5,
             width: '100%',
             display: 'flex',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            '& .MuiPaginationItem-root': {
+              color: 'lime'
+            }
           }}
         />
       </Container>

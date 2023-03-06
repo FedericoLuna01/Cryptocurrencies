@@ -25,7 +25,11 @@ export const Header = () => {
         position='static'
       >
         <Container>
-          <Toolbar>
+          <Toolbar
+            sx={{
+              justifyContent: 'space-between'
+            }}
+          >
             <Typography
               component={Link}
               to='/'

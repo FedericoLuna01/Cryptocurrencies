@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import AliceCarousel from 'react-alice-carousel'
 import { Link } from 'react-router-dom'
-import { GetCoinList } from '../config/api'
+import { GetTrendingCoins } from '../config/api'
 import { CryptoState } from '../CryptoContext'
 
 const responsive = {
@@ -14,20 +14,21 @@ const responsive = {
 }
 
 export function numberWithCommas (x) {
+  if (!x) return
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
 
 export const Carousel = () => {
   const [trendCrypto, setTrendCrypto] = useState([])
   const { currency } = CryptoState()
+
   const fetchTrendingCoins = async () => {
-    const data = await GetCoinList(currency)
+    const data = await GetTrendingCoins(currency)
     setTrendCrypto(data)
   }
 
   useEffect(() => {
     fetchTrendingCoins()
-    console.log(trendCrypto)
   }, [currency])
 
   const items = trendCrypto.map((coin) => {
